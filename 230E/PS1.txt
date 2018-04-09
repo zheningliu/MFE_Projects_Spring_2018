@@ -1,0 +1,125 @@
+Portfolio daily mean is: 
+ Lo 10     0.000442
+2-Dec     0.000405
+3-Dec     0.000418
+4-Dec     0.000425
+5-Dec     0.000407
+6-Dec     0.000421
+7-Dec     0.000395
+8-Dec     0.000386
+9-Dec     0.000366
+Hi 10     0.000330
+MKT_vw    0.000346
+dtype: float64
+Portfolio daily standard deviation is: 
+ Lo 10     0.012927
+2-Dec     0.013118
+3-Dec     0.012359
+4-Dec     0.011993
+5-Dec     0.011878
+6-Dec     0.011496
+7-Dec     0.011522
+8-Dec     0.011295
+9-Dec     0.011244
+Hi 10     0.010877
+MKT_vw    0.010734
+dtype: float64
+Portfolio monthly mean is: 
+ Lo 10     0.009280
+2-Dec     0.008500
+3-Dec     0.008781
+4-Dec     0.008933
+5-Dec     0.008554
+6-Dec     0.008842
+7-Dec     0.008285
+8-Dec     0.008102
+9-Dec     0.007692
+Hi 10     0.006920
+MKT_vw    0.007272
+dtype: float64
+Portfolio monthly standard deviation is: 
+ Lo 10     0.059241
+2-Dec     0.060113
+3-Dec     0.056637
+4-Dec     0.054957
+5-Dec     0.054430
+6-Dec     0.052679
+7-Dec     0.052801
+8-Dec     0.051760
+9-Dec     0.051528
+Hi 10     0.049845
+MKT_vw    0.049189
+dtype: float64Portfolio yearly mean is: 
+ Lo 10     0.111359
+2-Dec     0.101995
+3-Dec     0.105366
+4-Dec     0.107198
+5-Dec     0.102644
+6-Dec     0.106110
+7-Dec     0.099423
+8-Dec     0.097223
+9-Dec     0.092303
+Hi 10     0.083040
+MKT_vw    0.087260
+dtype: float64
+Portfolio yearly standard deviation is: 
+ Lo 10     0.059241
+2-Dec     0.060113
+3-Dec     0.056637
+4-Dec     0.054957
+5-Dec     0.054430
+6-Dec     0.052679
+7-Dec     0.052801
+8-Dec     0.051760
+9-Dec     0.051528
+Hi 10     0.049845
+MKT_vw    0.049189
+dtype: float64
+Portfolio daily mean pre-1945 is: 
+ Lo 10     0.000349
+2-Dec     0.000271
+3-Dec     0.000253
+4-Dec     0.000293
+5-Dec     0.000226
+6-Dec     0.000311
+7-Dec     0.000174
+8-Dec     0.000202
+9-Dec     0.000160
+Hi 10     0.000162
+MKT_vw    0.000171
+dtype: float64
+Portfolio daily mean post-1945 is: 
+ Lo 10     0.000473
+2-Dec     0.000449
+3-Dec     0.000473
+4-Dec     0.000469
+5-Dec     0.000468
+6-Dec     0.000458
+7-Dec     0.000468
+8-Dec     0.000447
+9-Dec     0.000435
+Hi 10     0.000385
+MKT_vw    0.000405
+dtype: float64
+The pre and post 1945 means of portfolio Lo 10 are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio 2-Dec are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio 3-Dec are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio 4-Dec are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio 5-Dec are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio 6-Dec are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio 7-Dec are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio 8-Dec are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio 9-Dec are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio Hi 10 are NOT significantly different at 5% confidence interval
+The pre and post 1945 means of portfolio MKT_vw are NOT significantly different at 5% confidence interval
+The OLS regression of portfolio Lo 10 lagged return is: r_VW = 0.000357826875699 + 0.189684407283r_i + 2.00709215335e-20
+The OLS regression of portfolio 2-Dec lagged return is: r_VW = 0.000341952078718 + 0.155149252547r_i + -1.30460989968e-19
+The OLS regression of portfolio 3-Dec lagged return is: r_VW = 0.000341133654877 + 0.183189320745r_i + -1.35478720351e-19
+The OLS regression of portfolio 4-Dec lagged return is: r_VW = 0.000353207934755 + 0.169526920929r_i + -3.01063823002e-20
+The OLS regression of portfolio 5-Dec lagged return is: r_VW = 0.000341871561743 + 0.160944255878r_i + 1.40496450734e-19
+The OLS regression of portfolio 6-Dec lagged return is: r_VW = 0.000351389454721 + 0.165401839178r_i + 4.51595734504e-20
+The OLS regression of portfolio 7-Dec lagged return is: r_VW = 0.000336392764839 + 0.147329602727r_i + -1.00354607667e-19
+The OLS regression of portfolio 8-Dec lagged return is: r_VW = 0.00033898198905 + 0.12131689667r_i + -1.7812942861e-19
+The OLS regression of portfolio 9-Dec lagged return is: r_VW = 0.000329982692034 + 0.098902192213r_i + 1.75620563418e-20
+The OLS regression of portfolio Hi 10 lagged return is: r_VW = 0.000317662313306 + 0.0357509415318r_i + -1.30460989968e-19
+The OLS regression of portfolio MKT_vw lagged return is: r_VW = 0.000319529196092 + 0.0770290855697r_i + 1.75620563418e-19
