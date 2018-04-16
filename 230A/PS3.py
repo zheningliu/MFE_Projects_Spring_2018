@@ -43,11 +43,8 @@ E_m, Var_m, SR_m = portfolio_prop(w0_m, w_m)
 print ("Mean: %s, Standard Deviation: %s, Sharpe: %s" % (E_m, np.sqrt(Var_m), SR_m))
 
 # part 1e
-print ("\n################## Part 1e ##################(Not Completed)\n")
-R_i = np.diag(E.A1)
-R_m = np.identity(3) * E_m
-#print (np.dot(R_i, R_m) * w_m)
-beta = (np.dot(R_i, R_m) - np.identity(3) * E.mean() * E_m) / Var_m
+print ("\n################## Part 1e ##################\n")
+beta = np.dot(w_m.T, Var) / Var_m
 print (beta)
 
 # part 2a&b
@@ -55,7 +52,7 @@ print ("\n################## Part 2a&b ##################\n")
 raw = pd.read_csv("PS3_q2_rawdata.csv")
 q2_df = np.log(1 + raw.iloc[:,1:]) * 12
 er = q2_df.iloc[:,[0,2,3,4]].sub(q2_df.iloc[:,1], axis=0)
-Rm_e = np.log(1+0.022) * 12
+Rm_e = np.log(1+0.022) * 12 - q2_df.iloc[:,1].mean()
 for i in range(3):
 	result = sm.ols(formula = "%s ~ sp500" % (er.columns.values[i+1]), data = er).fit()
 	print ("%s. Stock %s:\n" % (i+1, er.columns.values[i+1]))
@@ -66,13 +63,29 @@ for i in range(3):
 
 # part 2c
 print ("\n################## Part 2c ##################\n")
+index = raw.index[raw['Period']==20070131][0]
 Rf = q2_df.iloc[:,1].mean(axis=0)
-E_3 = q2_df.iloc[:,2:5].mean(axis=0)
-Var_3 = np.cov(q2_df.iloc[:,2:5].as_matrix().T)
-w_3 = np.dot(np.linalg.inv(Var_3), np.asmatrix(E_3-Rf).T)
-w0_3 = 1 - sum(w_3)
+E_3 = q2_df.iloc[:index,2:5].mean(axis=0)
+Var_3 = q2_df.iloc[:index,2:5].cov()
+w_3 = np.dot(np.linalg.inv(Var_3), np.asmatrix(E_3-Rf).T) / sum(np.dot(np.linalg.inv(Var_3), np.asmatrix(E_3-Rf).T))
+w0_3 = 0
 E_mv, Var_mv, SR_mv = portfolio_prop(w0_3, w_3, np.asmatrix(E_3).T, np.asmatrix(Var_3), Rf)
 print ("Mean: %s, Standard Deviation: %s, Sharpe: %s" % (E_mv, np.sqrt(Var_mv), SR_mv))
 
 # part 2d
-print ("\n################## Part 2d ##################(Not Completed)\n")
+print ("\n################## Part 2d ##################\n")
+beta_3 = np.dot(w_3.T, Var_3) / Var_mv
+E3_e = E_3 - Rf
+Emv_e = E_mv - Rf
+print (E3_e, beta_3, Emv_e)
+
+# part 2e
+print ("\n################## Part 2e ##################\n")
+E_after = q2_df.iloc[index:,2:5].mean(axis=0)
+Var_after = q2_df.iloc[index:,2:5].cov()
+Emv_after, Varmv_after, SRmv_after = portfolio_prop(w0_3, w_3, np.asmatrix(E_after).T, np.asmatrix(Var_after), Rf)
+print ("Mean: %s, Standard Deviation: %s, Sharpe: %s" % (Emv_after, np.sqrt(Varmv_after), SRmv_after))
+beta_after = np.dot(w_3.T, Var_after) / Varmv_after
+Ee_after = E_after - Rf
+Eemv_after = Emv_after - Rf
+print (Ee_after, beta_after, Eemv_after)
