@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.formula.api as sm
 import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
 
 df = pd.read_excel("PredictorData2015_GoyalWelch.xlsx")
 index = df.index[df["yyyymm"]==192601][0]
@@ -16,8 +17,8 @@ sample_df["CRSP_SPvw"] = sample_df["CRSP_SPvw"].apply(lambda x: np.log(1+x)*12)
 sample_df["CRSP_SPvwx"] = sample_df["CRSP_SPvwx"].apply(lambda x: np.log(1+x)*12)
 print ("CRSP_SPvw has mean %.6f and variance %.6f" % (sample_df["CRSP_SPvw"].mean(), sample_df["CRSP_SPvw"].std()**2))
 print ("CRSP_SPvwx has mean %.6f and variance %.6f" % (sample_df["CRSP_SPvwx"].mean(), sample_df["CRSP_SPvwx"].std()**2))
-plt.plot(sample_df.index, sample_df["CRSP_SPvw"], 'r-', sample_df.index, sample_df["CRSP_SPvwx"], 'g-')
-plt.show()
+# plt.plot(sample_df.index, sample_df["CRSP_SPvw"], 'r-', sample_df.index, sample_df["CRSP_SPvwx"], 'g-')
+# plt.show()
 
 # part 5
 dp_t = sample_df["dp_t"].shift()
@@ -31,6 +32,9 @@ ols_df["ep_t"] = sample_df["ep_t"].copy()
 ep_rlt = sm.ols(formula = "ep_t ~ ep_tm1", data = ols_df.iloc[1:,:]).fit()
 print ("\nStatistics for ep_t: ")
 print (ep_rlt.summary())
+# plot_acf(ols_df["dp_t"])
+# plot_acf(ols_df["ep_t"])
+# plt.show()
 
 # part 6
 # pred_df = pd.concat([pd.Series(dp_rlt.predict()[1:]), sample_df["CRSP_SPvw"][2:].reset_index(drop=True)], axis=1)
@@ -51,3 +55,13 @@ rep_rlt = sm.ols(formula = "r_tp1 ~ ep_t", data = ols_df).fit()
 print ("\nStatistics for r_tp1 against ep_t: ")
 print (rep_rlt.summary())
 
+# part 7
+ols_df["rf_t"] = sample_df["Rfree"].apply(lambda x: np.log(1+x)*12)
+ols_df["rf_tm1"] = sample_df["Rfree"].shift().apply(lambda x: np.log(1+x)*12)
+print (ols_df.head())
+rf_rlt = sm.ols(formula = "rf_t ~ rf_tm1", data = ols_df).fit()
+print ("\nStatistics for rf against rf-1: ")
+print (rf_rlt.summary())
+rrf_rlt = sm.ols(formula = "r_tp1 ~ rf_t", data = ols_df).fit()
+print ("\nStatistics for r_tp1 against rf: ")
+print (rrf_rlt.summary())
